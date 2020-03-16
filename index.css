@@ -1,0 +1,103 @@
+ html{
+  background-color: black;
+  }
+  
+  .container{
+  border: solid 10px white;
+  /* display:flex; */
+  /* flex-direction: column; */
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: 475px;
+  width: 750px;
+  /* height: 70vh;
+  width: 80vw; */
+  background-color: rgba(0, 255, 0, 0.822);
+  /* justify-content: space-between;
+  align-items: center; */
+  left: 525px;
+  position: fixed;
+  }
+  
+  .paddle{
+  background: white;
+  width: 125px;
+  height: 20px;
+  position: absolute;
+  transform: ease-in-out;
+  }
+
+  .ball{
+  background: black;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  position: absolute;
+  left: 370px;
+  top: 250px;
+  }
+
+  #paddle1{
+    bottom: 2.5%;
+    left: 320px;
+  }
+  
+  #paddle2{
+    top: 2.5%;
+    left: 320px;
+  }
+
+  h1{
+  text-align: center;
+  font: white;
+  }
+  
+  .scoreboard{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 75px;
+  padding-bottom: 50px;
+  }
+  
+  .score1, .score2{
+  background:white;
+  width: 150px;
+  height:75px;
+  line-height: 75px;
+  text-align: center;
+  }
+  
+  .controlls{
+  /* display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px; */
+  position:absolute;
+  bottom: 15px;
+  }
+  
+  .button{
+  background:white;
+  width: 100px;
+  height:50px;
+  }
+  
+  .player1{
+   margin-left: 400px;
+   margin-bottom: -50px;
+  }
+  .player2{
+   margin-left: 1200px;
+  }
+  
+  
+  .reset{
+  background:white;
+  width: 100px;
+  height:50px;
+  }
+  

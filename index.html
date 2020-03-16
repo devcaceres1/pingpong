@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Mod Project</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+        
+    <div class="scoreboard">
+       
+        <div class="score1"> Player 1 Score</div>
+        <button type="reset" class="reset" onclick="restartB()"> Restart</button>
+        <div class="score2"> Player 2 Score</div>
+
+        </div>
+    
+    <div class="container" id="container">
+            <div class="paddle" id="paddle1"></div>
+        
+            <div class="ball" id="ball"></div>
+        
+            <div class="paddle" id="paddle2"></div>
+            </div>
+    </div>
+
+    <div class="controlls">
+        <div class="player1">
+            <button type="button"  class="button" id="button1" onclick="plLeft()"> Z </button>
+            <button type="button" class="button" id="button2" onclick="plRight()"> X </button>
+        </div>
+    
+        <div class="player2">
+            <button type="button" class="button" id="button3" onclick="pl2Left()"> Left  </button>
+            <button type="button" class="button" id="button4" onclick="pl2Right()"> Right </button>
+    </div>        
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="..//onaluf-gameQuery-2445a87/jquery.gamequery.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
