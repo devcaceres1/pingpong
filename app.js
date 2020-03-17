@@ -1,11 +1,9 @@
 let position = 0;
 let player1 = 0;
 let player2 = 0;
-// let ballGo ="down";
-// let top= 6;
 let tPaddle = document.getElementById("paddle2")
 let bPaddle = document.getElementById("paddle1")
-// let ball = document.getElementsByClassName("ball")
+
 
 
     addEventListener('keydown', function movePieces (e) {
@@ -44,38 +42,79 @@ let bPaddle = document.getElementById("paddle1")
     })
         
         let speed;
-
         window.onload = function() {
-            speed = 1.5;
-            let posx = 1; 
-            let posy = 1;
-            let stepx = 1;
+            speed = 1;
+            let xpos = 2; 
+            let ypos = 2;
+            let stepx = 2;
             let stepy = 2;
     
-            let ball = document.getElementById('ball');
+        let ball = document.getElementById('ball');
         
         let container = document.getElementById('container');
-        let hball = ball.offsetHeight; 
-        let wball = ball.offsetWidth;
         let hcont = container.offsetHeight; 
         let wcont = container.offsetWidth;
+        let hball = ball.offsetHeight; 
+        let wball = ball.offsetWidth;
         
-        let timer = setInterval(move, 6); //every 6 millisecond function move is working 
+        let timer = setInterval(movement, 7); //every 6 millisecond function move is working 
 
-        function move() {
-            if(posx >= (wcont-wball) || posx <= 0) {
+        function movement() {
+            if(xpos >= (wcont-wball) || xpos <= 0) {
                 stepx *= -1; //reversing it by one so it stays within the border
             }
-            if(posy >= (hcont-hball) || posy <= 0) {
+            if(ypos >= (hcont-hball) || ypos <= 0) {
                 stepy *= -1;
             }
-                posx += stepx * speed;
-                posy += stepy * speed;
-                ball.style.left = posx+"px";
-                ball.style.top = posy+ "px";
+                xpos += stepx * speed;
+                ypos += stepy * speed;
+                ball.style.left = xpos+"px";
+                ball.style.top = ypos+ "px";
             
-        }
-    };
+            }
+        };
+
+        //function for collision detection that isn't working 
+            function many () {
+                if (collision(ball, tPaddle)) {
+                    ballGo = "up";
+                console.log(collision)
+                }   else if (collision(ball, bPaddle)) {
+                    ballGo = "down";
+                }
+                if (ballGo === "down") {
+                    ballDown();
+                } else {
+                    ballUp();
+                }
+        };
+
+            function ballDown () {
+                ball.css("top", parseInt(ball.css("top")) + top);
+            }
+            
+            function ballUp () {
+                ball.css("top", parseInt(ball.css("top")) - top);
+            }
+
+            function collision($div1, $div2) {
+                let x1 = $div1.offset().left;
+                let y1 = $div1.offset().top;
+                let h1 = $div1.outerHeight(true);
+                let w1 = $div1.outerWidth(true);
+                let b1 = y1 + h1;
+                let r1 = x1 + w1;
+                let x2 = $div2.offset().left;
+                let y2 = $div2.offset().top;
+                let h2 = $div2.outerHeight(true);
+                let w2 = $div2.outerWidth(true);
+                let b2 = y2 + h2;
+                let r2 = x2 + w2;
+        
+                if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+                return true;
+            }
+
             button.addEventListener("click", pressLeft());
 
             function plLeft () {
@@ -146,8 +185,6 @@ let bPaddle = document.getElementById("paddle1")
         // }   else if (player2 == 10) {
         //         alert("Player 2 wins")
         // }
-
-
         
             // document.getElementById("button4").addEventListener("click", pressRight());
 
@@ -184,11 +221,6 @@ let bPaddle = document.getElementById("paddle1")
         //     function ballDown(){
         //         ball.css('top',parseInt(ball.css('top')) + top);
         //     }
-
-
-
-
-
 
 
 
