@@ -1,4 +1,8 @@
+alert("She don't work. YET!");
+
+
 let position = 0;
+let ballGo;
 let player1 = 0;
 let player2 = 0;
 let tPaddle = document.getElementById("paddle2")
@@ -40,7 +44,7 @@ let bPaddle = document.getElementById("paddle1")
                 bPaddle.style.left = 'calc(320px + ' + position + 'px)'
         }  
     })
-        
+        //gets ball to move onload but maybe that's why it's not working with C.D.?
         let speed;
         window.onload = function() {
             speed = 1;
@@ -57,14 +61,14 @@ let bPaddle = document.getElementById("paddle1")
         let hball = ball.offsetHeight; 
         let wball = ball.offsetWidth;
         
-        let timer = setInterval(movement, 7); //every 6 millisecond function move is working 
+        let timer = setInterval(movement, 7); //every 6 millisecond function movement is working 
 
         function movement() {
             if(xpos >= (wcont-wball) || xpos <= 0) {
                 stepx *= -1; //reversing it by one so it stays within the border
             }
             if(ypos >= (hcont-hball) || ypos <= 0) {
-                stepy *= -1;
+                stepy *= -1; //reversing it by one so it stays within the border
             }
                 xpos += stepx * speed;
                 ypos += stepy * speed;
@@ -75,12 +79,31 @@ let bPaddle = document.getElementById("paddle1")
         };
 
         //function for collision detection that isn't working 
+        function collision($div1, $div2) {
+            let x1 = $div1.offset().left;
+            let y1 = $div1.offset().top;
+            let h1 = $div1.outerHeight(true);
+            let w1 = $div1.outerWidth(true);
+            let b1 = y1 + h1;
+            let r1 = x1 + w1;
+            let x2 = $div2.offset().left;
+            let y2 = $div2.offset().top;
+            let h2 = $div2.outerHeight(true);
+            let w2 = $div2.outerWidth(true);
+            let b2 = y2 + h2;
+            let r2 = x2 + w2;
+    
+            if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+            return true;
+        }
+        
+        
             function many () {
                 if (collision(ball, tPaddle)) {
-                    ballGo = "up";
-                console.log(collision)
-                }   else if (collision(ball, bPaddle)) {
                     ballGo = "down";
+                //console.log(collision)
+                }   else if (collision(ball, bPaddle)) {
+                    ballGo = "up";
                 }
                 if (ballGo === "down") {
                     ballDown();
@@ -97,23 +120,7 @@ let bPaddle = document.getElementById("paddle1")
                 ball.css("top", parseInt(ball.css("top")) - top);
             }
 
-            function collision($div1, $div2) {
-                let x1 = $div1.offset().left;
-                let y1 = $div1.offset().top;
-                let h1 = $div1.outerHeight(true);
-                let w1 = $div1.outerWidth(true);
-                let b1 = y1 + h1;
-                let r1 = x1 + w1;
-                let x2 = $div2.offset().left;
-                let y2 = $div2.offset().top;
-                let h2 = $div2.outerHeight(true);
-                let w2 = $div2.outerWidth(true);
-                let b2 = y2 + h2;
-                let r2 = x2 + w2;
-        
-                if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-                return true;
-            }
+            
 
             button.addEventListener("click", pressLeft());
 
